@@ -34,7 +34,11 @@ const Board = (() => {
     score.textContent = val;
   }
   const updateLives = (val) => {
-    
+    if (val > 0) {
+      lives.appendChild(createHeart());
+    } else {
+      lives.removeChild(lives.lastChild);
+    }
   }
 
   return {
@@ -43,7 +47,8 @@ const Board = (() => {
 })();
 
 const Basket = (() => {
-  const basketUI = document.querySelector("#Basket")
+  const basketUI = document.querySelector(".Basket");
+  let X = 50;
 
   const move = (() => {
     
@@ -68,4 +73,11 @@ function Bomb() {
   return {
 
   }
+}
+
+function createHeart() {
+  const ui = document.createElement('div');
+  ui.classList.add('heart');
+
+  return ui;
 }
