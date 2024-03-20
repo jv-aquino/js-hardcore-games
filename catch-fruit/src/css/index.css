@@ -2,11 +2,13 @@
   box-sizing: border-box;
 }
 
-body {
+body, p, div {
+  padding: 0;
   margin: 0;
 }
 
-.Game {
+.board {
+  position: relative;
   width: 100%;
   height: 100vh;
 
@@ -14,10 +16,24 @@ body {
   background-size: 100% 100%;
 }
 
-.fruit,
-.bomb {
-  
-  transform: translateY(100vh);
+.basket {
+  transform: translateX(50%);
+  transition: transform .7s;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lives {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  gap: 10px;
 }
 
 .heart {
@@ -26,4 +42,10 @@ body {
   
   background-image: url(../img/heart.png);
   background-size: 100% 100%;
+}
+
+.fruit,
+.bomb {
+  
+  transform: translateY(100vh);
 }

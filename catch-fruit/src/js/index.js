@@ -1,16 +1,30 @@
-const Game = (() => {
+import { generate as generateID } from "shortid";
+
+console.log(generateID());
+
+const Controller = (() => {
   let lives, score;
-  let fruits, bombs, bonus;
+  let fruits = {}, bombs = {}, bonus = {};
 
   const start = () => {
     lives = 3;
     score = 0;
-    fruits = [], bombs = [], bonus = [];
+    fruits = {}, bombs = {}, bonus = {};
 
+    Interface.updateLives(lives);
+    Interface.updateScore(score);
   }
 
   const checkCollision = () => {
+    for (key in fruits) {
+      
+    }
+    for (key in bombs) {
+      
+    }
+    for (key in bonus) {
 
+    }
   }
 
   function isColliding(rect1, rect2) {
@@ -20,25 +34,33 @@ const Game = (() => {
            rect1.y + rect1.height > rect2.y;
   }
 
-
   return {
     start
   }
 })();
 
-const Board = (() => {
-  const score = document.querySelector('#score');
-  const lives = document.querySelector('#lives');
+const Interface = (() => {
+  const score = document.querySelector('.score');
+  const lives = document.querySelector('.lives');
 
   const updateScore = (val) => {
     score.textContent = val;
   }
+
   const updateLives = (val) => {
     if (val > 0) {
-      lives.appendChild(createHeart());
+      for (let i = 0; i < val; i++) {
+        lives.appendChild(createHeart());
+      }
     } else {
       lives.removeChild(lives.lastChild);
     }
+  }
+
+  const add = () => {
+    let id = generateID();
+
+
   }
 
   return {
@@ -50,28 +72,28 @@ const Basket = (() => {
   const basketUI = document.querySelector(".Basket");
   let X = 50;
 
-  const move = (() => {
+  const move = (val) => {
     
-  })
+  }
 
   return {
-
+    move
   }
 })();
 
-function Fruit() {
+function Fruit(id) {
   const startX = Math.floor(Math.random() * 60 + 20);
   
   return {
-
+    id
   }
 }
 
-function Bomb() {
+function Bomb(id) {
   const startX = Math.floor(Math.random() * 60 + 20);
   
   return {
-
+    id
   }
 }
 
